@@ -15,14 +15,14 @@ Cuando la aplicación comienza todas las notas de todos los alumnos en todos los
 
 import java.util.Scanner;
 
-public class Array {
+public class ArrayMenu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int opcion, alumno, suma1 = 0, suma2 = 0, suma3 = 0;
-        double media1, media2, media3, mediaAmbos;
+        int opcion, alumno;
         int[] trimestre1 = new int[5];
         int[] trimestre2 = new int[5];
         int[] trimestre3 = new int[5];
+        int[] medias = new int[5];
 
         do {
             System.out.println("MENU");
@@ -50,6 +50,7 @@ public class Array {
                         trimestre2[i] = sc.nextInt();
                     }
                     break;
+
                 case 3:
                     System.out.println("Introducir notas del tercer trimestre");
                     for (int i = 0; i < trimestre3.length; i++) {
@@ -58,34 +59,19 @@ public class Array {
                     break;
 
                 case 4:
-
-                    for (int i = 0; i < trimestre1.length; i++) {
-                        suma1 = suma1 + trimestre1[i];
+                    for (int i = 0; i < medias.length; i++) {
+                        System.out.print("Notas de alumno "+ (i + 1) +" : " );
+                        medias[i] = (trimestre1[i] + trimestre2[i] + trimestre3[i])/3;
+                        System.out.println(medias[i]);
                     }
-                    media1 = suma1 / trimestre1.length;
-
-                    for (int i = 0; i < trimestre2.length; i++) {
-                        suma2 = suma2 + trimestre2[i];
-                    }
-                    media2 = suma2 / trimestre2.length;
-
-                    for (int i = 0; i < trimestre3.length; i++) {
-                        suma3 = suma3 + trimestre3[i];
-                    }
-                    media3 = suma3 / trimestre3.length;
-
-                    mediaAmbos = (media1 + media2 + media3) / 3;
-                    System.out.println(media1);
-                    System.out.println(media2);
-                    System.out.println(media3);
-                    System.out.println(mediaAmbos);
                     break;
 
                 case 5:
+                    System.out.print("Introduce el alumno: ");
                     alumno = sc.nextInt();
-                    System.out.println("Nota media de alumno" + (alumno + 1));
-                    mediaAmbos = (trimestre1[alumno]+trimestre2[alumno]+trimestre3[alumno])/3;
-                    System.out.println(mediaAmbos);
+                    System.out.println("Nota media de alumno " + alumno);
+                    alumno = alumno -1;
+                    System.out.println(medias[alumno]);
                     break;
             }
         } while (opcion != 6);
